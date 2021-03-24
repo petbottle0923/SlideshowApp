@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let images:[UIImage] = [UIImage(named:"IMG_4552.HEIC")!,UIImage(named:"IMG_4562.HEIC")!,UIImage(named:"IMG_4560.jpg")!]
     var pointer = 0
+    
     var image1:UIImage! = nil
     
     var timer: Timer!
@@ -26,6 +27,14 @@ class ViewController: UIViewController {
         initImageView()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let expansionViewController:ExpansionViewController = segue.destination as! ExpansionViewController
+        
+        expansionViewController.expansionImage = self.image1
+    }
+    
+    
     
     @IBAction func forward(_ sender: Any) {
         if self.timer == nil{
@@ -60,6 +69,9 @@ class ViewController: UIViewController {
             self.timer.invalidate()
             self.timer = nil
         }
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue){
     }
     
     @objc func playShow(_ timer: Timer){
@@ -98,7 +110,7 @@ class ViewController: UIViewController {
         self.imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
         
         // UIImageViewのインスタンスをビューに追加
-        //self.view.addSubview(self.imageView)
+        self.view.addSubview(self.imageView)
     }
 }
 
