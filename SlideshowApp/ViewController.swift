@@ -32,6 +32,10 @@ class ViewController: UIViewController {
         let expansionViewController:ExpansionViewController = segue.destination as! ExpansionViewController
         
         expansionViewController.expansionImage = self.image1
+
+        self.timer.invalidate()
+        self.timer = nil
+
     }
     
     
